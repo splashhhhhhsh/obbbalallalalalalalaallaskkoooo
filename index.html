@@ -35,7 +35,7 @@ header .links-left, header nav {
   gap: 20px;
 }
 
-header .links-left a {
+header .links-left a, header nav a {
   text-decoration: none;
   font-weight: bold;
   color: #111;
@@ -44,20 +44,7 @@ header .links-left a {
   cursor: pointer;
 }
 
-header .links-left a:hover {
-  color: #c79aed;
-}
-
-header nav a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #111;
-  font-size: 1em;
-  transition: color 0.3s;
-  cursor: pointer;
-}
-
-header nav a:hover {
+header .links-left a:hover, header nav a:hover {
   color: #c79aed;
 }
 
@@ -100,10 +87,12 @@ header nav a:hover {
   padding: 0 40px;
   height: 90vh;
   gap: 60px;
+  position: relative;
 }
 
 #hero .text {
   max-width: 40%;
+  z-index: 3;
 }
 
 #hero h1 {
@@ -122,6 +111,7 @@ header nav a:hover {
   max-width: 550px;
   height: auto;
   border-radius: 20px;
+  z-index: 1;
 }
 
 /* ARTISTS */
@@ -213,21 +203,13 @@ header nav a:hover {
   font-size: 1.2em;
 }
 
-#contacts p {
-  font-size: 1.2em;
-}
-
-#contacts .demo {
-  margin-top: 35px;
-  font-weight: bold;
-}
-
 #contacts img {
   max-width: 500px;
   border-radius: 20px;
   margin-left: 100px;
 }
 
+/* SOCIAL LINKS */
 .social-links {
   display: flex;
   gap: 20px;
@@ -240,20 +222,15 @@ header nav a:hover {
   border-radius: 50%;
   background-color: #c79aed;
   display: grid;
-  place-items: center; /* идеальный центр */
+  place-items: center;
   text-decoration: none;
 }
 
-.social-links i {
-  font-size: 22px;
-  color: white;
-}
-
-.social-links svg {
+.social-links i, .social-links svg {
   width: 22px;
   height: 22px;
+  color: white;
   fill: white;
-  display: block;
 }
 
 /* FOOTER */
@@ -278,201 +255,64 @@ footer {
   object-fit: contain;
 }
 
+/* HERO GLOW */
 .hero-glow span{
   display:inline-block;
   animation: letterGlow 4s ease-in-out infinite;
 }
 
-.hero-glow span:nth-child(1){animation-delay:0s}
-.hero-glow span:nth-child(2){animation-delay:0.1s}
-.hero-glow span:nth-child(3){animation-delay:0.2s}
-.hero-glow span:nth-child(4){animation-delay:0.3s}
-.hero-glow span:nth-child(5){animation-delay:0.4s}
-.hero-glow span:nth-child(6){animation-delay:0.5s}
-.hero-glow span:nth-child(7){animation-delay:0.6s}
-.hero-glow span:nth-child(8){animation-delay:0.7s}
-.hero-glow span:nth-child(9){animation-delay:0.8s}
-.hero-glow span:nth-child(10){animation-delay:0.9s}
-.hero-glow span:nth-child(11){animation-delay:1s}
-.hero-glow span:nth-child(12){animation-delay:1.1s}
-.hero-glow span:nth-child(13){animation-delay:1.2s}
-.hero-glow span:nth-child(14){animation-delay:1.3s}
-.hero-glow span:nth-child(15){animation-delay:1.4s}
-.hero-glow span:nth-child(16){animation-delay:1.5s}
-.hero-glow span:nth-child(17){animation-delay:1.6s}
-.hero-glow span:nth-child(18){animation-delay:1.7s}
-.hero-glow span:nth-child(19){animation-delay:1.8s}
-.hero-glow span:nth-child(20){animation-delay:1.9s}
-.hero-glow span:nth-child(21){animation-delay:2s}
-.hero-glow span:nth-child(22){animation-delay:2.1s}
-.hero-glow span:nth-child(23){animation-delay:2.2s}
-
 @keyframes letterGlow{
-
-0%{
-color:rgba(17,17,17,0.10);
-}
-
-50%{
-color:rgba(17,17,17,0.25);
-}
-
-100%{
-color:rgba(17,17,17,0.10);
-}
-
+0%{ color:rgba(17,17,17,0.10);}
+50%{ color:rgba(17,17,17,0.25);}
+100%{ color:rgba(17,17,17,0.10);}
 }
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-  #hero, #contacts {
-    flex-direction: column;
-    text-align: center;
-  }
-  #hero .text, #contacts .text {
-    max-width: 80%;
-  }
-  #contacts img {
-    margin-left: 0;
-  }
-  header {
-    flex-direction: column;
-    gap: 10px;
-  }
+  #hero, #contacts { flex-direction: column; text-align: center; }
+  #hero .text, #contacts .text { max-width: 80%; }
+  #contacts img { margin-left: 0; }
+  header { flex-direction: column; gap: 10px; }
+  header .links-left, header nav { justify-content: center; gap: 10px; flex-wrap: wrap; }
+  header .links-left a, header nav a { font-size: 0.9em; }
 }
 
 @media (max-width: 768px) {
+  #hero { padding: 0 20px; gap: 30px; height: auto; }
+  #hero .text { max-width: 100%; }
+  #hero h1 { font-size: 2.8em; line-height: 1.1em; }
+  #hero p { font-size: 1em; }
+  #hero img { max-width: 100%; height: auto; }
+  .hero-glow { font-size: 2.2em !important; top: 20%; transform: translate(-50%, -50%); line-height: 1.2em; }
+  #artists { padding: 40px 15px 60px 15px; }
+  .artist-list { gap: 20px; }
+  .artist-card { width: 90%; max-width: 320px; padding: 15px; }
+  .artist-card button { font-size: 1.1em; padding: 10px 14px; }
+  .artist-description, .artist-genre { font-size: 0.95em; }
+  #contacts { flex-direction: column; padding: 50px 15px; gap: 30px; }
+  #contacts .text { max-width: 100%; text-align: center; }
+  #contacts img { margin-left: 0; max-width: 90%; }
+  .social-links { justify-content: center; gap: 15px; }
+  .social-links a { width: 45px; height: 45px; }
+  .social-links i, .social-links svg { width: 20px; height: 20px; font-size: 20px; }
+  .footer-inner { flex-direction: column; gap: 10px; font-size: 0.85em; }
+  .footer-inner img { width: 24px; height: 24px; }
+  .marquee { font-size: 1em; }
+}
 
-  /* HERO */
-  #hero {
-    padding: 0 20px;
-    gap: 30px;
-    height: auto;
-  }
-
-  #hero .text {
-    max-width: 100%;
-  }
-
-  #hero h1 {
-    font-size: 2.8em;
-    line-height: 1.1em;
-  }
-
-  #hero p {
-    font-size: 1em;
-  }
-
-  #hero img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .hero-glow {
-    font-size: 2.2em !important;
-    top: 20%;
-    transform: translate(-50%, -50%);
-    line-height: 1.2em;
-  }
-
-  /* HEADER */
-  header {
-    padding: 15px 20px;
-  }
-
-  header .links-left, header nav {
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  header .links-left a, header nav a {
-    font-size: 0.9em;
-  }
-
-  /* ARTISTS */
-  #artists {
-    padding: 40px 15px 60px 15px;
-  }
-
-  .artist-list {
-    gap: 20px;
-  }
-
-  .artist-card {
-    width: 90%;
-    max-width: 320px;
-    padding: 15px;
-  }
-
-  .artist-card button {
-    font-size: 1.1em;
-    padding: 10px 14px;
-  }
-
-  .artist-description, .artist-genre {
-    font-size: 0.95em;
-  }
-
-  /* CONTACTS */
-  #contacts {
-    flex-direction: column;
-    padding: 50px 15px;
-    gap: 30px;
-  }
-
-  #contacts .text {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  #contacts img {
-    margin-left: 0;
-    max-width: 90%;
-  }
-
-  .social-links {
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .social-links a {
-    width: 45px;
-    height: 45px;
-  }
-
-  .social-links i, .social-links svg {
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
-  }
-
-  /* FOOTER */
-  .footer-inner {
-    flex-direction: column;
-    gap: 10px;
-    font-size: 0.85em;
-  }
-
-  .footer-inner img {
-    width: 24px;
-    height: 24px;
-  }
-
-  /* MARQUEE */
-  .marquee {
-    font-size: 1em;
-  }
+/* ЗАЩИТА ВСЕХ ИЗОБРАЖЕНИЙ */
+img {
+  user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Верхняя строка -->
-<div class="marquee">
-  <div class="marquee-track" id="marqueeTop"></div>
-</div>
+<div class="marquee"><div class="marquee-track" id="marqueeTop"></div></div>
 
 <header>
   <div class="links-left">
@@ -487,28 +327,15 @@ color:rgba(17,17,17,0.10);
   </nav>
 </header>
 
-<section id="hero" style="position: relative;">
-  
-  <!-- Полупрозрачный текст поверх всего блока, по центру -->
-  <div class="hero-glow" style="
-    position: absolute;
-    top: 14%;  /* Подняли выше */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 4em;
-    font-weight: 700;
-    color: rgba(17,17,17,0.12);
-    text-align: center;
-    z-index: 2;
-    pointer-events: none;
-  ">
+<section id="hero">
+  <div class="hero-glow" style="position:absolute;top:14%;left:50%;transform:translate(-50%,-50%);font-size:4em;font-weight:700;color:rgba(17,17,17,0.12);text-align:center;z-index:2;pointer-events:none;">
     <span>Т</span><span>а</span><span>м</span>, 
-<span>г</span><span>д</span><span>е</span> 
-<span>р</span><span>о</span><span>ж</span><span>д</span><span>а</span><span>ю</span><span>т</span><span>с</span><span>я</span> 
-<span>х</span><span>и</span><span>т</span><span>ы</span>..
+    <span>г</span><span>д</span><span>е</span> 
+    <span>р</span><span>о</span><span>ж</span><span>д</span><span>а</span><span>ю</span><span>т</span><span>с</span><span>я</span> 
+    <span>х</span><span>и</span><span>т</span><span>ы</span>..
   </div>
 
-  <div class="text" style="position: relative; z-index: 3;">
+  <div class="text">
     <h1>Облако Мьюзик</h1>
     <p>
       Российский и независимый музыкальный лейбл, специализирующийся на продвижении современных исполнителей и инновационных музыкальных проектов. 
@@ -517,44 +344,41 @@ color:rgba(17,17,17,0.10);
     </p>
   </div>
 
-  <img src="images/oblakomusic.jpg" style="position: relative; z-index: 1; border-radius: 20px;">
+  <img src="images/oblakomusic.jpg" alt="Облако Мьюзик">
 </section>
 
+<!-- ARTISTS -->
 <section id="artists">
 <h2>Артисты лейбла</h2>
 <div class="artist-list">
-
-<div class="artist-card">
-  <img src="images/babystefee.jpg">
-  <button onclick="window.open('https://band.link/BabyStefee_artist', '_blank')">Baby Stefee</button>
-  <div class="artist-description">Режиссёр-постановщик, дизайнер, продюсер и автор песен.</div>
-  <div class="artist-genre"><strong>Жанр / стиль:</strong><br>R&B, трэп-соул, хип-хоп рэп, электроника.</div>
-</div>
-
-<div class="artist-card">
-  <img src="images/javamillian.jpg">
-  <button onclick="window.open('https://band.link/Javamillian_artist', '_blank')">Javamillian</button>
-  <div class="artist-description">Рэп-исполнитель с богатым опытом и многолетней практикой.</div>
-  <div class="artist-genre"><strong>Жанр / стиль:</strong><br>Русский рэп, дрилл, трэп.</div>
-</div>
-
-<div class="artist-card">
-  <img src="images/djflappy.jpg">
-  <button onclick="window.open('https://band.link/DjFlappy_artist', '_blank')">DjFlappy</button>
-  <div class="artist-description">Музыкальный продюсер, ремикс-мейкер и концертный диджей.</div>
-  <div class="artist-genre"><strong>Жанр / стиль:</strong><br>Электроника, хаус, клубная эстетика.</div>
-</div>
-
-<div class="artist-card">
-  <img src="images/stxfsound.jpg">
-  <button onclick="window.open('https://band.link/stxfsound_artist', '_blank')">stxfsound</button>
-  <div class="artist-description">Мультижанровый музыкальный продюсер, звукорежиссёр и ремикс-мейкер.</div>
-  <div class="artist-genre"><strong>Жанр / стиль:</strong><br>Электроника, клаб, хаус, хип-хоп рэп.</div>
-</div>
-
+  <div class="artist-card">
+    <img src="images/babystefee.jpg">
+    <button onclick="window.open('https://band.link/BabyStefee_artist', '_blank')">Baby Stefee</button>
+    <div class="artist-description">Режиссёр-постановщик, дизайнер, продюсер и автор песен.</div>
+    <div class="artist-genre"><strong>Жанр / стиль:</strong><br>R&B, трэп-соул, хип-хоп рэп, электроника.</div>
+  </div>
+  <div class="artist-card">
+    <img src="images/javamillian.jpg">
+    <button onclick="window.open('https://band.link/Javamillian_artist', '_blank')">Javamillian</button>
+    <div class="artist-description">Рэп-исполнитель с богатым опытом и многолетней практикой.</div>
+    <div class="artist-genre"><strong>Жанр / стиль:</strong><br>Русский рэп, дрилл, трэп.</div>
+  </div>
+  <div class="artist-card">
+    <img src="images/djflappy.jpg">
+    <button onclick="window.open('https://band.link/DjFlappy_artist', '_blank')">DjFlappy</button>
+    <div class="artist-description">Музыкальный продюсер, ремикс-мейкер и концертный диджей.</div>
+    <div class="artist-genre"><strong>Жанр / стиль:</strong><br>Электроника, хаус, клубная эстетика.</div>
+  </div>
+  <div class="artist-card">
+    <img src="images/stxfsound.jpg">
+    <button onclick="window.open('https://band.link/stxfsound_artist', '_blank')">stxfsound</button>
+    <div class="artist-description">Мультижанровый музыкальный продюсер, звукорежиссёр и ремикс-мейкер.</div>
+    <div class="artist-genre"><strong>Жанр / стиль:</strong><br>Электроника, клаб, хаус, хип-хоп рэп.</div>
+  </div>
 </div>
 </section>
 
+<!-- CONTACTS -->
 <section id="contacts">
 <div class="text">
 <h2>Контактная информация</h2>
@@ -567,19 +391,14 @@ color:rgba(17,17,17,0.10);
 <a href="https://t.me/oblakomus1c" target="_blank"><i class="fab fa-telegram-plane"></i></a>
 <a href="https://vk.com/oblakomusic" target="_blank"><i class="fab fa-vk"></i></a>
 <a href="https://genius.com/artists/Oblako-music" target="_blank">
-  <svg viewBox="0 0 24 24">
-    <path d="M3 10h18v2H3zm2 4h14v2H5zm2 4h10v2H7z" fill="white"/>
-  </svg>
+  <svg viewBox="0 0 24 24"><path d="M3 10h18v2H3zm2 4h14v2H5zm2 4h10v2H7z"/></svg>
 </a>
 </div>
 </div>
-
-<img src="images/oblakodesign.jpg">
+<img src="images/oblakodesign.jpg" alt="Дизайн лейбла">
 </section>
 
-<div class="marquee bottom">
-  <div class="marquee-track" id="marqueeBottom"></div>
-</div>
+<div class="marquee bottom"><div class="marquee-track" id="marqueeBottom"></div></div>
 
 <footer>
   <div class="footer-inner">
@@ -588,42 +407,39 @@ color:rgba(17,17,17,0.10);
   </div>
 </footer>
 
-<!-- Круги поверх всего -->
 <canvas id="cloud-canvas-top"></canvas>
 
 <script>
-// В самый верх
-document.querySelector('.scroll-top').addEventListener('click', function(e){
-e.preventDefault();
-window.scrollTo({ top: 0, behavior: 'smooth' });
+// Скролл к верху
+document.querySelector('.scroll-top').addEventListener('click', e=>{
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Остальные якоря
+// Якоря
 document.querySelectorAll('.scroll-link').forEach(link => {
-link.addEventListener('click', e => {
-e.preventDefault();
-const target = document.querySelector(link.getAttribute('href'));
-window.scrollTo({top: target.offsetTop - 80, behavior: 'smooth'});
-});
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    window.scrollTo({top: target.offsetTop - 80, behavior: 'smooth'});
+  });
 });
 
-// Генерация бесконечного текста
-function createMarquee(id) {
+// Бегущие строки
+function createMarquee(id){
   const container = document.getElementById(id);
   let text = '';
-  for (let i = 0; i < 60; i++) {
-    text += 'OBLAKO MUSIC • ';
-  }
-  container.innerHTML = '<span>' + text + '</span><span>' + text + '</span>';
+  for(let i=0;i<60;i++){text+='OBLAKO MUSIC • ';}
+  container.innerHTML='<span>'+text+'</span><span>'+text+'</span>';
 }
 createMarquee('marqueeTop');
 createMarquee('marqueeBottom');
 
-// Canvas с кругами поверх всех элементов
+// Canvas с кругами
 const topCanvas = document.getElementById('cloud-canvas-top');
 const topCtx = topCanvas.getContext('2d');
 
-function resizeTopCanvas() {
+function resizeTopCanvas(){
   topCanvas.width = window.innerWidth;
   topCanvas.height = window.innerHeight;
 }
@@ -632,53 +448,45 @@ resizeTopCanvas();
 
 const topCloudCount = 30;
 const topClouds = [];
-for (let i = 0; i < topCloudCount; i++) {
+for(let i=0;i<topCloudCount;i++){
   topClouds.push({
-    x: Math.random() * topCanvas.width,
-    y: Math.random() * topCanvas.height,
-    r: 20 + Math.random() * 50,
-    dx: (Math.random() - 0.5) * 0.3,
-    dy: (Math.random() - 0.5) * 0.3,
+    x: Math.random()*topCanvas.width,
+    y: Math.random()*topCanvas.height,
+    r: 20 + Math.random()*50,
+    dx: (Math.random()-0.5)*0.3,
+    dy: (Math.random()-0.5)*0.3,
     color: `rgba(199,154,237,${0.15 + Math.random()*0.1})`
   });
 }
 
-// Стиль canvas
-topCanvas.style.position = 'fixed';
-topCanvas.style.top = '0';
-topCanvas.style.left = '0';
-topCanvas.style.width = '100%';
-topCanvas.style.height = '100%';
-topCanvas.style.zIndex = '9999';
-topCanvas.style.pointerEvents = 'none';
-topCanvas.style.background = 'transparent';
+topCanvas.style.position='fixed';
+topCanvas.style.top='0';
+topCanvas.style.left='0';
+topCanvas.style.width='100%';
+topCanvas.style.height='100%';
+topCanvas.style.zIndex='9999';
+topCanvas.style.pointerEvents='none';
+topCanvas.style.background='transparent';
 
-// Анимация
-function animateTopCanvas() {
-  topCtx.clearRect(0, 0, topCanvas.width, topCanvas.height);
-
-  for (let cloud of topClouds) {
-    cloud.x += cloud.dx;
-    cloud.y += cloud.dy;
-
-    if (cloud.x < -cloud.r) cloud.x = topCanvas.width + cloud.r;
-    if (cloud.x > topCanvas.width + cloud.r) cloud.x = -cloud.r;
-    if (cloud.y < -cloud.r) cloud.y = topCanvas.height + cloud.r;
-    if (cloud.y > topCanvas.height + cloud.r) cloud.y = -cloud.r;
-
+function animateTopCanvas(){
+  topCtx.clearRect(0,0,topCanvas.width,topCanvas.height);
+  for(let cloud of topClouds){
+    cloud.x+=cloud.dx; cloud.y+=cloud.dy;
+    if(cloud.x<-cloud.r) cloud.x=topCanvas.width+cloud.r;
+    if(cloud.x>topCanvas.width+cloud.r) cloud.x=-cloud.r;
+    if(cloud.y<-cloud.r) cloud.y=topCanvas.height+cloud.r;
+    if(cloud.y>topCanvas.height+cloud.r) cloud.y=-cloud.r;
     topCtx.beginPath();
     topCtx.arc(cloud.x, cloud.y, cloud.r, 0, Math.PI*2);
     topCtx.fillStyle = cloud.color;
     topCtx.fill();
   }
-
   requestAnimationFrame(animateTopCanvas);
 }
 animateTopCanvas();
 
-document.addEventListener("contextmenu", function(e){
-  e.preventDefault();
-});
+// Блокировка правой кнопки мыши
+document.addEventListener("contextmenu", e=>e.preventDefault());
 </script>
 
 </body>
